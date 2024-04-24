@@ -23,8 +23,8 @@ import os
 #secrets = toml.load("secrets.toml")
 
 # Get the API key
-YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
-VIDEO_ID = "-Iizd0AkpVI"
+YOUTUBE_API_KEY = os.getenv('API_KEY')
+VIDEO_ID = "yUL-RvDzaAU"
 
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
@@ -82,7 +82,7 @@ pipeline = dlt.pipeline(pipeline_name="youtube_comments_pipeline",
 # run the pipeline with default settings, and capture the outcome
 info = pipeline.run(comments_data, 
                     table_name="youtube_comments_table", 
-                    write_disposition="replace")
+                    write_disposition="append")
 
 # show the outcome
 print(info)
