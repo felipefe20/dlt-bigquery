@@ -1,6 +1,9 @@
 name: Run Python script
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '*/30 * * * *'  # Run every 30 minutes
 
