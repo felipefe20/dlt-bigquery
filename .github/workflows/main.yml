@@ -7,6 +7,14 @@ on:
   schedule:
     - cron: '*/30 * * * *'  # Run every 30 minutes
 
+env:
+  DATASET_NAME: youtube_comments_data
+  DESTINATION__BIGQUERY__CREDENTIALS__PROJECT_ID: resounding-hope-414923
+  DESTINATION__BIGQUERY__CREDENTIALS__LOCATION: US
+  DESTINATION__BIGQUERY__CREDENTIALS__CLIENT_EMAIL: terraform-service-account@resounding-hope-414923.iam.gserviceaccount.com
+  DESTINATION__BIGQUERY__CREDENTIALS__PRIVATE_KEY: ${{ secrets.DESTINATION__BIGQUERY__CREDENTIALS__PRIVATE_KEY }}
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
