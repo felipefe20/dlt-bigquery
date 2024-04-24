@@ -35,5 +35,4 @@ jobs:
 
     - name: Run script
       run: | 
-        export YOUTUBE_API_KEY=${{ secrets.API_KEY }}
         python dlt_pipeline.py
