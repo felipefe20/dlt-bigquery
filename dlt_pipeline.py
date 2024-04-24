@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 
 import toml
-
+import dlt
 
 # Load the date and time of the last comment processed from a file
 try:
@@ -74,7 +74,7 @@ while True:
 with open("last_comment.txt", "w") as file:
     file.write(last_comment_time.isoformat())
 
-import dlt
+
 
 pipeline = dlt.pipeline(pipeline_name="youtube_comments_pipeline",
         destination='bigquery',
