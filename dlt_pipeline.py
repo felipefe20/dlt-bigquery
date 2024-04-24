@@ -6,7 +6,7 @@ import pytz
 
 import toml
 import dlt
-
+import os 
 # Load the date and time of the last comment processed from a file
 try:
     with open("last_comment.txt", "r") as file:
@@ -24,7 +24,7 @@ if last_comment_time.tzinfo is None or last_comment_time.tzinfo.utcoffset(last_c
 #secrets = toml.load("secrets.toml")
 
 # Get the API key
-#YOUTUBE_API_KEY= secrets["API_KEY"]
+YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
 VIDEO_ID = "-Iizd0AkpVI"
 
 youtube = build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
