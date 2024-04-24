@@ -22,4 +22,6 @@ jobs:
         pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
     - name: Run script
-      run: python dlt_pipeline.py
+      run: | 
+        export API_KEY=${{ secrets.API_KEY }}
+        python dlt_pipeline.py
