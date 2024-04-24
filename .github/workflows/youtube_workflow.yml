@@ -1,4 +1,4 @@
-name: Run chess_pipeline pipeline from chess_pipeline.py
+name: Run youtube_comments pipeline from dlt_pipeline.py
 'on':
   schedule:
   - cron: '*/30 * * * *'
