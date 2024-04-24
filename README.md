@@ -6,6 +6,8 @@ This project is a data pipeline that fetches comments from a specific YouTube vi
 ![Pipeline Diagram](./images/pipeline.png)
 
 
+For further details, check out my [Medium blog] (https://medium.com/@ofelipefernandez/data-engineering-project-youtube-api-dlt-bigquery-looker-and-github-actions-for-automation-09ecedf5d859).
+
 ## Setup
 
 1. Install the required Python packages:
