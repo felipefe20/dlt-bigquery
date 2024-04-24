@@ -44,5 +44,13 @@ jobs:
       if: steps.cache-virtualenv.outputs.cache-hit != 'true'
     - run: pip install -r requirements_github_action.txt
       if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
+    - name: 'Use gcloud CLI'
+      run: 'gcloud info'
     - name: Run pipeline script
       run: python 'dlt_pipeline.py'
