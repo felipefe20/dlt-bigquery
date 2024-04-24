@@ -1,4 +1,3 @@
 dlt[bigquery]>=0.2.6
 google-api-python-client
 toml
-os
