@@ -8,16 +8,35 @@ import toml
 import dlt
 import os 
 # Load the date and time of the last comment processed from a file
+#try:
+#    with open("last_comment.txt", "r") as file:
+#        last_comment_time = datetime.fromisoformat(file.read())
+#except FileNotFoundError:
+#    last_comment_time = datetime.fromtimestamp(0, tz=pytz.UTC)  # If the file doesn't exist, set the last comment time to the Unix epoch
+
+# Make sure last_comment_time is timezone-aware
+#if last_comment_time.tzinfo is None or last_comment_time.tzinfo.utcoffset(last_comment_time) is None:
+#    last_comment_time = pytz.UTC.localize(last_comment_time)
+
+from google.cloud import storage
+
+# Create a storage client
+storage_client = storage.Client()
+
+# Get the bucket and blob
+bucket = storage_client.bucket('youtube_comments_bucket')
+blob = bucket.blob('last_comment.txt')
+
 try:
-    with open("last_comment.txt", "r") as file:
-        last_comment_time = datetime.fromisoformat(file.read())
+    # Download the blob to a string and parse the datetime
+    last_comment_time = datetime.fromisoformat(blob.download_as_text())
 except FileNotFoundError:
-    last_comment_time = datetime.fromtimestamp(0, tz=pytz.UTC)  # If the file doesn't exist, set the last comment time to the Unix epoch
+    # If the blob doesn't exist, set the last comment time to the Unix epoch
+    last_comment_time = datetime.fromtimestamp(0, tz=pytz.UTC)
 
 # Make sure last_comment_time is timezone-aware
 if last_comment_time.tzinfo is None or last_comment_time.tzinfo.utcoffset(last_comment_time) is None:
     last_comment_time = pytz.UTC.localize(last_comment_time)
-
 #Read the API key from the file secrets.toml
 
 # Load the secrets from the file
