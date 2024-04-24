@@ -21,7 +21,7 @@ if last_comment_time.tzinfo is None or last_comment_time.tzinfo.utcoffset(last_c
 #Read the API key from the file secrets.toml
 
 # Load the secrets from the file
-secrets = toml.load("secrets.toml")
+#secrets = toml.load("secrets.toml")
 
 # Get the API key
 #YOUTUBE_API_KEY= secrets["API_KEY"]
