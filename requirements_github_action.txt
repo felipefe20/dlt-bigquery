@@ -1,1 +1,3 @@
-# please provide valid dependencies including dlt package
+dlt[bigquery]
+toml 
+google-api-python-client
